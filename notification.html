@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Notifikasi</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: #f1f5f9;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+      }
+      .c {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        width: 340px;
+        box-shadow: 0 2px 10px #0002;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="c">
+      <h2>Notifikasi Peminjaman</h2>
+      <ul id="list"></ul>
+    </div>
+    <script>
+      const d = JSON.parse(localStorage.getItem("bookings") || "[]");
+      list.innerHTML = d.length
+        ? d
+            .map(
+              (b) =>
+                "<li>Peminjaman " +
+                b.ruang +
+                " oleh " +
+                b.nama +
+                " pada " +
+                b.tgl +
+                " telah diajukan</li>",
+            )
+            .join("")
+        : "<li>Belum ada notifikasi</li>";
+    </script>
+  </body>
+</html>
