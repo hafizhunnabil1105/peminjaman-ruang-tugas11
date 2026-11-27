@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Peminjaman Ruang</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: #f1f5f9;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+      }
+      .c {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        width: 340px;
+        box-shadow: 0 2px 10px #0002;
+      }
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+        box-sizing: border-box;
+      }
+      button {
+        background: #2563eb;
+        color: #fff;
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="c">
+      <h2>Form Peminjaman Ruang</h2>
+      <input id="nama" placeholder="Nama peminjam" />
+      <select id="ruang">
+        <option>R.4.4-4</option>
+        <option>R.4.4-5</option>
+        <option>Aula</option>
+      </select>
+      <input id="tgl" type="date" /><input id="mulai" type="time" /><input
+        id="selesai"
+        type="time"
+      />
+      <button onclick="pinjam()">Ajukan Peminjaman</button>
+      <ul id="daftar"></ul>
+    </div>
+    <script>
+      function ambil() {
+        return JSON.parse(localStorage.getItem("bookings") || "[]");
+      }
+      function tampil() {
+        daftar.innerHTML = ambil()
+          .map(
+            (b) =>
+              "<li>" +
+              b.nama +
+              " - " +
+              b.ruang +
+              " - " +
+              b.tgl +
+              " " +
+              b.mulai +
+              "-" +
+              b.selesai +
+              "</li>",
+          )
+          .join("");
+      }
+      function pinjam() {
+        if (!nama.value || !tgl.value || !mulai.value || !selesai.value) {
+          alert("Lengkapi semua kolom");
+          return;
+        }
+        const d = ambil();
+        d.push({
+          nama: nama.value,
+          ruang: ruang.value,
+          tgl: tgl.value,
+          mulai: mulai.value,
+          selesai: selesai.value,
+        });
+        localStorage.setItem("bookings", JSON.stringify(d));
+        tampil();
+      }
+      tampil();
+    </script>
+  </body>
+</html>
