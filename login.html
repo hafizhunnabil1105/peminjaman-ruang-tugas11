@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: #f1f5f9;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+      }
+      .c {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        width: 340px;
+        box-shadow: 0 2px 10px #0002;
+      }
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+        box-sizing: border-box;
+      }
+      button {
+        background: #2563eb;
+        color: #fff;
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="c">
+      <h2>Login Peminjaman Ruang</h2>
+      <input id="user" placeholder="Username" /><input
+        id="pass"
+        type="password"
+        placeholder="Password"
+      />
+      <button onclick="masuk()">Masuk</button>
+      <p id="msg"></p>
+      <a href="index.html">Ke Beranda</a>
+    </div>
+    <script>
+      function masuk() {
+        const ok = user.value === "mahasiswa" && pass.value === "1234";
+        msg.textContent = ok
+          ? "Login berhasil. Selamat datang, " + user.value
+          : "Username atau password salah";
+      }
+    </script>
+  </body>
+</html>
